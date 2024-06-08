@@ -46,7 +46,7 @@ class NetworkModule {
         converterFactory: Converter.Factory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(converterFactory)
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
