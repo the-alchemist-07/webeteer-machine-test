@@ -1,6 +1,7 @@
 package com.example.webeteer.app.di
 
 import com.example.webeteer.BuildConfig
+import com.example.webeteer.data.service.MovieService
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -53,4 +54,9 @@ class NetworkModule {
             .build()
     }
 
+    @Provides
+    @Singleton
+    fun provideMovieService(retrofit: Retrofit): MovieService {
+        return retrofit.create(MovieService::class.java)
+    }
 }
