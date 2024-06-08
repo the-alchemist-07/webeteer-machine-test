@@ -1,4 +1,4 @@
-package com.example.webeteer.ui
+package com.example.webeteer.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
