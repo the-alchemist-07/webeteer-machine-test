@@ -1,5 +1,9 @@
 package com.example.webeteer.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Movie(
     val id: String,
     val title: String,
@@ -8,4 +12,4 @@ data class Movie(
     val releaseDate: String,
     val posterUrl: String,
     val rating: String
-)
+) : Parcelable
