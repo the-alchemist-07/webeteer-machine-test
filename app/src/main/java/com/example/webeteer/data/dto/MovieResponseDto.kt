@@ -12,7 +12,7 @@ data class MovieResponseDto(
     @Json(name = "title")
     val title: String?,
     @Json(name = "homeData")
-    val homeData: List<GenreDto>?
+    val genreDtoList: List<GenreDto>?
 ) {
     @Keep
     @JsonClass(generateAdapter = true)
@@ -24,7 +24,7 @@ data class MovieResponseDto(
         @Json(name = "type")
         val type: Int?,
         @Json(name = "movieslist")
-        val moviesList: List<MovieDto>?
+        val movieDtoList: List<MovieDto>?
     ) {
         @Keep
         @JsonClass(generateAdapter = true)
@@ -61,7 +61,7 @@ data class MovieResponseDto(
             return Genre(
                 id = id ?: "",
                 genre = genre ?: "",
-                movieList = moviesList?.map { it.toMovie() } ?: emptyList()
+                movieList = movieDtoList?.map { it.toMovie() } ?: emptyList()
             )
         }
     }
