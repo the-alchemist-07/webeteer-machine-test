@@ -71,6 +71,9 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi.converter)
 
+    // Network Interceptor
+    implementation(libs.okhttp.interceptor)
+
     // Sandwich - Network Handler
     implementation(libs.sandwich)
 
