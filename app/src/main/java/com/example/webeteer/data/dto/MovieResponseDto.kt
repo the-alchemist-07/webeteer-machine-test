@@ -1,8 +1,10 @@
 package com.example.webeteer.data.dto
 
+import androidx.annotation.Keep
+import com.example.webeteer.domain.model.Genre
+import com.example.webeteer.domain.model.Movie
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import androidx.annotation.Keep
 
 @Keep
 @JsonClass(generateAdapter = true)
@@ -41,6 +43,26 @@ data class MovieResponseDto(
             val posterUrl: String?,
             @Json(name = "rating")
             val rating: String?
-        )
+        ) {
+            fun toMovie(): Movie {
+                return Movie(
+                    id = id ?: "",
+                    title = title ?: "",
+                    description = desc ?: "",
+                    genreList = genre ?: emptyList(),
+                    releaseDate = release ?: "",
+                    posterUrl = posterUrl ?: "",
+                    rating = rating ?: ""
+                )
+            }
+        }
+
+        fun toGenre(): Genre {
+            return Genre(
+                id = id ?: "",
+                genre = genre ?: "",
+                movieList = moviesList?.map { it.toMovie() } ?: emptyList()
+            )
+        }
     }
 }
