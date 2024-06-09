@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="180dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/dr_selectable_background"
     android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:layout_marginHorizontal="@dimen/half_common_margin"
+        android:layout_margin="@dimen/half_common_margin"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_movie_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,14 +21,16 @@
         tools:src="@drawable/img_john_wick_poster" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/half_common_margin"
+        android:layout_marginHorizontal="@dimen/half_common_margin"
+        android:layout_marginTop="@dimen/quarter_common_margin"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_sub_title"
+        android:textSize="@dimen/text_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

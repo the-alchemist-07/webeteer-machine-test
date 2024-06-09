@@ -6,4 +6,5 @@ sealed class HomeState {
     data class SuccessGenreList(val genreList: List<Genre>) : HomeState()
     data class Error(val message: String) : HomeState()
     data object Loading : HomeState()
+    data object Idle : HomeState()
 }

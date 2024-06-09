@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/half_common_margin">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvGenre"
@@ -27,15 +28,20 @@
         android:layout_marginEnd="@dimen/common_margin"
         android:text="@string/view_all"
         android:textColor="@color/red"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/dr_selectable_background"
+        android:padding="@dimen/quarter_common_margin"
         app:layout_constraintBottom_toBottomOf="@id/tvGenre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvGenre"
         app:layout_constraintTop_toTopOf="@id/tvGenre" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMovies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/common_margin"
+        android:layout_marginTop="@dimen/half_common_margin"
         tools:listitem="@layout/item_movie"
         android:orientation="horizontal"
         android:paddingStart="@dimen/half_common_margin"
