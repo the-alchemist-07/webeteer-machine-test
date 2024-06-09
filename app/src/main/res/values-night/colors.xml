@@ -3,6 +3,9 @@
     <color name="black">#FFFFFFFF</color>
     <color name="white">#FF000000</color>
     <color name="red">#FFFF1717</color>
+    <color name="yellow">#FFB700</color>
+    <color name="screen_background">#222222</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="opaque">#25FFFFFF</color>
     <color name="light_grey">#8C8C8C</color>
 </resources>

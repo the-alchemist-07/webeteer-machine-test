@@ -36,11 +36,10 @@ class MovieAdapter(
             // Loading the image using coil library
             binding.ivPoster.load(movieData.posterUrl) {
                 crossfade(true)
-                placeholder(R.drawable.img_movie_placeholder)
                 transformations(RoundedCornersTransformation(24f))
                 listener(
                     onError = { _, _ ->
-                        // If failed to load the image, this image will be set
+                        // If failed to load the given image, this image will be set by default
                         binding.ivPoster.load(R.drawable.img_john_wick_poster) {
                             crossfade(true)
                             transformations(RoundedCornersTransformation(24f))

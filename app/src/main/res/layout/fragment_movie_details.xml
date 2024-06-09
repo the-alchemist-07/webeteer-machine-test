@@ -1,14 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/screen_background"
     tools:context=".ui.details.MovieDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_john_wick_poster" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMovieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_heading"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/iconStar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                tools:text="John Wick" />
+
+            <ImageView
+                android:id="@+id/iconStar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/quarter_common_margin"
+                android:src="@drawable/ic_star_rate_24"
+                app:layout_constraintBottom_toBottomOf="@id/tvMovieTitle"
+                app:layout_constraintEnd_toStartOf="@id/tvRating"
+                app:layout_constraintTop_toTopOf="@id/tvMovieTitle"
+                app:tint="@color/yellow"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/tvMovieTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvMovieTitle"
+                tools:text="8.4" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="tvRating,iconStar" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupGenres"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/common_margin"
+                android:layout_marginTop="@dimen/quarter_common_margin"
+                app:layout_constraintEnd_toStartOf="@id/tvReleaseDate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvReleaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:layout_marginBottom="@dimen/quarter_common_margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_content"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/barrierDesc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMovieTitle"
+                tools:text="2021-05-19" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrierDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="chipGroupGenres,tvReleaseDate" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMovieDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_margin"
+                android:lineSpacingExtra="@dimen/quarter_common_margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/barrierDesc"
+                tools:text="With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin." />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/common_margin"
+        android:background="@drawable/dr_grey_selectable_background"
+        android:clickable="true"
+        android:elevation="@dimen/half_common_margin"
+        android:focusable="true"
+        android:padding="@dimen/half_common_margin"
+        android:src="@drawable/ic_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/white"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
