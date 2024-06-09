@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.example.webeteer.domain.model.Movie
 
 class MovieDetailsViewModel(
-    private val savedStateHandle: SavedStateHandle
-): ViewModel() {
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
 
     val movieData = savedStateHandle.get<Movie>("movieData")
 

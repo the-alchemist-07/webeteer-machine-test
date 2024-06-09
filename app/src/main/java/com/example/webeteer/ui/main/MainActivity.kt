@@ -8,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.webeteer.R
 import com.example.webeteer.databinding.ActivityMainBinding
-import com.example.webeteer.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -45,5 +43,4 @@ class MainActivity : AppCompatActivity() {
             slideBack.start()
         }
     }
-
 }

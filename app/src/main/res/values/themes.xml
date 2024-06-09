@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Webeteer" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-         <item name="colorPrimary">@color/red</item>
+        <item name="colorPrimary">@color/red</item>
     </style>
 
     <style name="Theme.Webeteer" parent="Base.Theme.Webeteer" />
@@ -10,7 +10,6 @@
     <!-- Splash theme. -->
     <style name="Theme.Webeteer.Splash" parent="Theme.SplashScreen">
         <!-- App icon for splash screen. -->
-        <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/img_splash</item>-->
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <!-- Theme to be applied after the splash screen. -->
         <item name="postSplashScreenTheme">@style/Theme.Webeteer</item>

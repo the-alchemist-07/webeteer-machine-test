@@ -29,11 +29,10 @@ class MovieRepositoryImpl @Inject constructor(
                 if (!movieResponseDto.genreDtoList.isNullOrEmpty()) {
                     val genreList = movieResponseDto.genreDtoList.map { it.toGenre() }
                     emit(Resource.Success(genreList))
-                }
-                else emit(Resource.Error(EMPTY_GENRES))
+                } else emit(Resource.Error(EMPTY_GENRES))
             }
             .suspendOnError {
-                when(this.statusCode) {
+                when (this.statusCode) {
                     StatusCode.InternalServerError -> emit(Resource.Error(SERVER_ERROR))
                     else -> emit(Resource.Error(GENERIC_ERROR_MESSAGE))
                 }
