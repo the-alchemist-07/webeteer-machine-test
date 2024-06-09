@@ -11,7 +11,13 @@ import com.example.webeteer.R
 import com.example.webeteer.databinding.ItemMovieBinding
 import com.example.webeteer.domain.model.Movie
 
-class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback) {
+class MovieAdapter(
+    private val listener: OnClickListener
+) : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallback) {
+
+    interface OnClickListener {
+        fun onMovieClicked(movie: Movie)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
@@ -27,6 +33,7 @@ class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallba
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movieData: Movie) {
             binding.tvMovie.text = movieData.title
+            // Loading the image using coil library
             binding.ivPoster.load(movieData.posterUrl) {
                 crossfade(true)
                 placeholder(R.drawable.img_movie_placeholder)
@@ -41,6 +48,10 @@ class MovieAdapter : ListAdapter<Movie, RecyclerView.ViewHolder>(MovieDiffCallba
                     }
                 )
             }
+
+            binding.root.setOnClickListener {
+                listener.onMovieClicked(movieData)
+            }
         }
     }
 }
@@ -53,5 +64,4 @@ object MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
     override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }
-
 }

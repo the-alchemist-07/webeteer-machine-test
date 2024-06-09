@@ -8,20 +8,23 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.webeteer.R
 import com.example.webeteer.databinding.FragmentHomeBinding
 import com.example.webeteer.domain.model.Genre
+import com.example.webeteer.domain.model.Movie
 import com.example.webeteer.ui.home.adapters.GenreAdapter
+import com.example.webeteer.ui.home.adapters.MovieAdapter
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment(R.layout.fragment_home), MovieAdapter.OnClickListener {
 
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
-    private val genreAdapter by lazy { GenreAdapter() }
+    private val genreAdapter by lazy { GenreAdapter(this) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,5 +63,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun showError(message: String) {
         showLoader(false)
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onMovieClicked(movie: Movie) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToMovieDetailsFragment(movieData = movie)
+        )
     }
 }

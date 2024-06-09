@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.webeteer.databinding.ItemGenreBinding
 import com.example.webeteer.domain.model.Genre
 
-class GenreAdapter : ListAdapter<Genre, RecyclerView.ViewHolder>(GenreDiffCallback) {
+class GenreAdapter(
+    private val listener: MovieAdapter.OnClickListener
+) : ListAdapter<Genre, RecyclerView.ViewHolder>(GenreDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding =
@@ -22,13 +24,13 @@ class GenreAdapter : ListAdapter<Genre, RecyclerView.ViewHolder>(GenreDiffCallba
 
     inner class GenreViewHolder(private val binding: ItemGenreBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(genreData: Genre) {
-                binding.tvGenre.text = genreData.genre
+        fun bind(genreData: Genre) {
+            binding.tvGenre.text = genreData.genre
 
-                val adapter = MovieAdapter()
-                binding.recyclerMovies.adapter = adapter
-                adapter.submitList(genreData.movieList)
-            }
+            val adapter = MovieAdapter(listener)
+            binding.recyclerMovies.adapter = adapter
+            adapter.submitList(genreData.movieList)
+        }
     }
 }
 
@@ -40,5 +42,4 @@ object GenreDiffCallback : DiffUtil.ItemCallback<Genre>() {
     override fun areContentsTheSame(oldItem: Genre, newItem: Genre): Boolean {
         return oldItem == newItem
     }
-
 }
